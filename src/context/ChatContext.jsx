@@ -121,6 +121,7 @@ export const ChatProvider = ({ children }) => {
       });
       toast.success(data.message);
       fetchChats();
+      window.location.reload();
     } catch (error) {
       console.log(error);
       alert("something went wrong");

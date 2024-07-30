@@ -22,6 +22,7 @@ const Home = () => {
     setPrompt,
     newRequestLoading,
     loading,
+    chats,
   } = ChatData();
 
   const submitHandler = (e) => {
@@ -89,24 +90,28 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="fixed bottom-0 right-0 left-auto p-4 bg-gray-900 w-full md:w-[75%]">
-        <form
-          onSubmit={submitHandler}
-          className="flex justify-center items-center"
-        >
-          <input
-            className="flex-grow p-4 bg-gray-700 rounded-l text-white outline-none"
-            type="text"
-            placeholder="Enter a promp here"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            required
-          />
-          <button className="p-4 bg-gray-700 rounded-r text-2xl text-white">
-            <IoMdSend />
-          </button>
-        </form>
-      </div>
+      {chats && chats.length === 0 ? (
+        ""
+      ) : (
+        <div className="fixed bottom-0 right-0 left-auto p-4 bg-gray-900 w-full md:w-[75%]">
+          <form
+            onSubmit={submitHandler}
+            className="flex justify-center items-center"
+          >
+            <input
+              className="flex-grow p-4 bg-gray-700 rounded-l text-white outline-none"
+              type="text"
+              placeholder="Enter a promp here"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              required
+            />
+            <button className="p-4 bg-gray-700 rounded-r text-2xl text-white">
+              <IoMdSend />
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

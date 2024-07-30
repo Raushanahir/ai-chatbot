@@ -14,6 +14,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       deleteChat(id);
     }
   };
+
+  const clickEvent = (id) => {
+    setSelected(id);
+    toggleSidebar();
+  };
   return (
     <div
       className={`fixed inset-0 bg-gray-800 p-4 transition-transform transform md:relative md:translate-x-0 md:w-1/4 md:block ${
@@ -45,7 +50,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               <button
                 key={e._id}
                 className="w-full text-left py-2 px-2 bg-gray-700 hover:bg-gray-600 rounded mt-2 flex justify-between items-center"
-                onClick={() => setSelected(e._id)}
+                onClick={() => clickEvent(e._id)}
               >
                 <span>{e.latestMessage.slice(0, 38)}...</span>
                 <button
